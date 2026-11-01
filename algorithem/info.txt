@@ -1,0 +1,1 @@
+1- Every account holder must have a unique invitation code. Other people can use that invitation code to create their account. 
