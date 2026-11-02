@@ -7,8 +7,8 @@ const LiveSupportContext = createContext(undefined)
 export function LiveSupportProvider({ children }) {
   const host1offline = "http://localhost:3001/"
   const host2offline = "http://localhost:8000/"
-  const host1online = "https://platform-axon-rust.vercel.app/"
-  const host2online = "https://platform-axon-realtime.onrender.com/"
+  const host1online = "https://platform-axon-api-dogar.vercel.app/"
+  const host2online = "https://platform-axon-realtime-zib7.onrender.com/"
   const [messages, setMessages] = useState([])
   const [isConnected, setIsConnected] = useState(false)
   const [typingStatus, setTypingStatus] = useState({})
