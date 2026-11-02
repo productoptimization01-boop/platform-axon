@@ -275,25 +275,58 @@ export default function HomePage() {
         </header>
 
         <main className="flex-1 overflow-auto pb-24">
-          {/* Enhanced Hero Section */}
-          <section className="relative w-full h-[400px] overflow-hidden bg-[#2d3e2f]">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#2d3e2f] via-[#3d4e3f] to-[#2d3e2f]"></div>
+          {/* Motivational Banner - theme-matched, responsive on mobile and desktop */}
+          <section className="relative w-full overflow-hidden bg-[#2d3e2f]">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#2d3e2f] via-[#3a4d3c] to-[#1f2a20]"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#a3d65c]/10 via-transparent to-[#a3d65c]/10"></div>
 
-            {/* Floating Elements */}
-            <div className="absolute top-20 left-10 w-32 h-32 bg-lime-500/20 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-20 right-10 w-40 h-40 bg-lime-400/10 rounded-full blur-3xl"></div>
+            {/* Glow Elements */}
+            <div className="absolute -top-10 left-1/4 w-40 h-40 sm:w-56 sm:h-56 bg-[#a3d65c]/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-0 right-1/4 w-40 h-40 sm:w-56 sm:h-56 bg-lime-400/10 rounded-full blur-3xl"></div>
 
-            <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center">
-              <div className="mb-6 p-5 rounded-full bg-lime-500 shadow-2xl">
-                <LucideIcons.ArrowUpRight className="h-16 w-16 text-[#2d3e2f] rotate-45" />
+            <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
+              <div className="mb-4 sm:mb-5 inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-[#a3d65c]/20 border border-[#a3d65c]/30 rounded-full">
+                <LucideIcons.Sparkles className="h-4 w-4 text-[#a3d65c]" />
+                <span className="text-[#a3d65c] font-semibold text-xs sm:text-sm">Premium Platform</span>
               </div>
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
-                Let's work
-                <span className="block">together!</span>
+              <div className="mb-5 sm:mb-6 p-4 sm:p-5 rounded-full bg-gradient-to-r from-[#a3d65c] to-[#8bc34a] shadow-2xl shadow-[#a3d65c]/30">
+                <LucideIcons.TrendingUp className="h-10 w-10 sm:h-14 sm:w-14 text-[#2d3e2f]" />
+              </div>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 leading-tight">
+                Rise Higher,
+                <span className="block text-[#a3d65c]">Together.</span>
               </h2>
-              <p className="text-xl text-gray-300 max-w-2xl mb-8">
-                Discover seamless services, exclusive events, and unparalleled support in our premium platform.
+              <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-xl sm:max-w-2xl mb-6 sm:mb-8 leading-relaxed">
+                Dream big, grow faster, and unlock premium rewards, exclusive events, and support that never stops — every step, every day.
               </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+                <Link href="/starting" className="w-full sm:w-auto">
+                  <Button className="w-full sm:w-auto bg-[#a3d65c] text-[#2d3e2f] hover:bg-[#8bc34a] font-bold px-6 sm:px-8 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <LucideIcons.PlayCircle className="h-5 w-5 mr-2" />
+                    Start Earning
+                  </Button>
+                </Link>
+                <Link href="/vip-levels" className="w-full sm:w-auto">
+                  <Button
+                    variant="outline"
+                    className="w-full sm:w-auto bg-transparent border-[#a3d65c]/40 text-white hover:bg-[#a3d65c]/10 hover:text-[#a3d65c] font-bold px-6 sm:px-8 py-3 rounded-2xl transition-all duration-300"
+                  >
+                    <LucideIcons.Crown className="h-5 w-5 mr-2" />
+                    Explore VIP Levels
+                  </Button>
+                </Link>
+              </div>
+              <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs sm:text-sm text-gray-300">
+                  <LucideIcons.Shield className="h-4 w-4 text-[#a3d65c]" /> Secure Platform
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs sm:text-sm text-gray-300">
+                  <LucideIcons.Zap className="h-4 w-4 text-[#a3d65c]" /> Fast Rewards
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs sm:text-sm text-gray-300">
+                  <LucideIcons.Headphones className="h-4 w-4 text-[#a3d65c]" /> 24/7 Support
+                </span>
+              </div>
             </div>
           </section>
 
