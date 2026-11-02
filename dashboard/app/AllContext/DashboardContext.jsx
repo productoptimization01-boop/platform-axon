@@ -33,8 +33,8 @@ export function DashboardProvider({ children }) {
 
   const host1offline = "http://localhost:3001/"
   const host2offline = "http://localhost:8000/"
-  const host1online = "https://platform-axon-rust.vercel.app/"
-  const host2online = "https://platform-axon-realtime.onrender.com/"
+  const host1online = "https://platform-axon-api-dogar.vercel.app/"
+  const host2online = "https://platform-axon-realtime-zib7.onrender.com/"
 
   const pushRealtimeEvent = (type, description, username) => {
     setRealtimeEvents((prev) => [{ time: new Date().toISOString(), type, description, username: username || "" }, ...prev].slice(0, 50));
