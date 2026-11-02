@@ -7,21 +7,28 @@ import {
   Dialog,
   DialogTrigger,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
 } from "@/components/ui/dialog"
 import * as LucideIcons from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { fetchAdminSettings, DEFAULT_SETTINGS } from "@/lib/admin-settings"
 import CS from "@/app/Common/CustomerService/CS"
+import { useLiveSupportContext } from "@/app/AllContext/ChatContext"
 
 export default function VipLevelsPage() {
   const pathname = usePathname()
   const router = useRouter()
   const [storedUser, setStoredUser] = useState(null)
   const [isCSOpen, setIsCSOpen] = useState(false)
+  const { setIsChatOpen, fetchChatHistory, connectSSE } = useLiveSupportContext()
+
+  // Upgrade Now opens the live chat popup directly, not the old Upgrade modal.
+  const handleUpgradeNow = async () => {
+    if (!storedUser) return
+    setIsChatOpen(true)
+    await fetchChatHistory(storedUser._id)
+    connectSSE(storedUser._id)
+  }
 
   useEffect(() => {
     const userData = localStorage.getItem("user")
@@ -124,12 +131,6 @@ export default function VipLevelsPage() {
   const currentUserVipLevel = storedUser
     ? "VIP" + JSON.parse(localStorage.getItem("user")).currentVIPLevel.number
     : null
-
-  const supportReps = [
-    { name: "Support Representative 1", phone: "1234567890" },
-    { name: "Support Representative 2", phone: "1234567891" },
-    { name: "Support Representative 3", phone: "1234567892" },
-  ]
 
   const bottomNavLinks = [
     { name: "Home", icon: LucideIcons.Home, href: "/" },
@@ -284,66 +285,13 @@ export default function VipLevelsPage() {
                           Current Level
                         </div>
                       ) : (
-                        <Dialog>
-                          <DialogTrigger asChild>
-                            <Button
-                              className={`w-full py-3 text-lg font-bold bg-gradient-to-r ${vip.color} hover:opacity-90 text-white shadow-2xl rounded-2xl transition-all duration-300 transform hover:scale-105`}
-                            >
-                              <LucideIcons.ArrowUp className="h-5 w-5 mr-2" />
-                              Upgrade Now
-                            </Button>
-                          </DialogTrigger>
-                          <DialogContent className="sm:max-w-[425px] bg-[#3a4d3c] backdrop-blur-xl border border-[#a3d65c]/20 rounded-2xl">
-                            <DialogHeader>
-                              <DialogTitle className="text-2xl font-bold text-[#a3d65c]">
-                                Upgrade to {vip.level}
-                              </DialogTitle>
-                              <DialogDescription className="text-gray-300">
-                                Contact our support team to upgrade to {vip.level} - {vip.name} and unlock exclusive
-                                benefits.
-                              </DialogDescription>
-                            </DialogHeader>
-                            <div className="grid gap-4 py-4">
-                              <div className="p-4 bg-[#2d3e2f]/50 rounded-2xl border border-[#a3d65c]/20">
-                                <div className="flex items-center gap-3 mb-3">
-                                  <div className={`p-2 rounded-xl bg-gradient-to-r ${vip.color}`}>
-                                    {IconComponent && <IconComponent className="h-5 w-5 text-white" />}
-                                  </div>
-                                  <div>
-                                    <div className="font-bold text-white">
-                                      {vip.level} - {vip.name}
-                                    </div>
-                                    <div className="text-sm text-gray-300">
-                                      Deposit: ${vip.depositRequired.toLocaleString()}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="text-sm text-gray-300">
-                                  Commission: <span className="font-bold text-[#a3d65c]">{vip.commission}</span> | Limit:{" "}
-                                  <span className="font-bold text-[#a3d65c]">{vip.withdrawalLimit}</span>
-                                </div>
-                              </div>
-                              {supportReps.map((rep, repIndex) => (
-                                <a
-                                  key={repIndex}
-                                  href={`https://wa.me/${rep.phone}`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  <Button
-                                    variant="ghost"
-                                    className="w-full justify-start text-white hover:text-[#a3d65c] hover:bg-[#2d3e2f] rounded-xl p-4 transition-all duration-200"
-                                  >
-                                    <div className="p-2 rounded-lg bg-gradient-to-r from-[#a3d65c] to-[#8bc34a] mr-3">
-                                      <LucideIcons.MessageCircle className="h-4 w-4 text-white" />
-                                    </div>
-                                    {rep.name}
-                                  </Button>
-                                </a>
-                              ))}
-                            </div>
-                          </DialogContent>
-                        </Dialog>
+                        <Button
+                          onClick={handleUpgradeNow}
+                          className={`w-full py-3 text-lg font-bold bg-gradient-to-r ${vip.color} hover:opacity-90 text-white shadow-2xl rounded-2xl transition-all duration-300 transform hover:scale-105`}
+                        >
+                          <LucideIcons.ArrowUp className="h-5 w-5 mr-2" />
+                          Upgrade Now
+                        </Button>
                       )}
                     </div>
                   </Card>
