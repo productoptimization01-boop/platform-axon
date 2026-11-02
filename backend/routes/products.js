@@ -133,11 +133,15 @@ router.delete("/deleteProduct/:id", async (req, res) => {
             return res.status(404).json({ message: "Product not found" });
         }
 
-        // Delete product image from Cloudinary if exists
+        // Delete product image from Cloudinary if exists.
+        // A Cloudinary failure must NOT block the database deletion:
+        // otherwise a product whose image cannot be destroyed becomes
+        // undeletable. Log the failure and always delete the DB record.
         if (product.productImage?.publicId) {
-            const result = await cloudinary.uploader.destroy(product.productImage.publicId);
-            if (result.result !== "ok" && result.result !== "not found") {
-                return res.status(500).json({ message: "Failed to delete image from Cloudinary" });
+            try {
+                await cloudinary.uploader.destroy(product.productImage.publicId);
+            } catch (imageError) {
+                console.error("Cloudinary image delete failed, deleting DB record anyway:", imageError);
             }
         }
 
