@@ -170,28 +170,6 @@ export default function HomePage() {
                 )}
               </Button>
 
-              {/* 💬 Chat Icon */}
-              <SupportChat
-                userId={storedUser._id}
-                username={storedUser.username}
-                renderPanel={false}
-                renderTrigger={({ unseenCount, openChat }) => (
-                  <button
-                    onClick={openChat}
-                    className="relative text-gray-300 hover:text-lime-400 transition-colors rounded-xl hover:bg-[#3d4e3f] p-2"
-                  >
-                    <LucideIcons.MessageCircle className="h-6 w-6" />
-
-                    {unseenCount > 0 && (
-                      <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] rounded-full flex items-center justify-center">
-                        {unseenCount}
-                      </span>
-                    )}
-                  </button>
-                )}
-              />
-
-
               {/* 👤 Profile */}
               <Link
                 href="/profile"
@@ -512,6 +490,29 @@ export default function HomePage() {
             </div>
           </section>
         </main>
+
+        {/* 💬 Floating Support Chat Button (bottom-right, above bottom nav) */}
+        <SupportChat
+          userId={storedUser._id}
+          username={storedUser.username}
+          renderPanel={false}
+          renderTrigger={({ unseenCount, openChat }) => (
+            <button
+              onClick={openChat}
+              title="Support Chat"
+              aria-label="Open support chat"
+              className="fixed bottom-24 right-4 z-50 w-14 h-14 rounded-full bg-lime-500 hover:bg-lime-600 text-[#2d3e2f] shadow-2xl shadow-lime-500/30 border-2 border-lime-400 flex items-center justify-center transition-all duration-300 hover:scale-105"
+            >
+              <LucideIcons.MessageCircle className="h-7 w-7" />
+              {unseenCount > 0 && (
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-[11px] font-bold rounded-full flex items-center justify-center border-2 border-[#2d3e2f]">
+                  {unseenCount}
+                </span>
+              )}
+              <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-400 rounded-full border-2 border-[#2d3e2f]"></span>
+            </button>
+          )}
+        />
 
         <Bottom />
       </div>
