@@ -7,8 +7,8 @@ const ChatContext = createContext(undefined)
 export function ChatProvider({ children }) {
   const host1offline = "http://localhost:3001/"
   const host2offline = "http://localhost:8000/"
-  const host1online = "https://platform-axon-rust.vercel.app/"
-  const host2online = "https://platform-axon-realtime.onrender.com/"
+  const host1online = "https://platform-axon-api-dogar.vercel.app/"
+  const host2online = "https://platform-axon-realtime-zib7.onrender.com/"
   const [users, setUsers] = useState([])
   const [selectedUser, setSelectedUser] = useState(null)
   const [messages, setMessages] = useState([])
