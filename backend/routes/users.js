@@ -52,10 +52,7 @@ router.post("/createUser", async (req, res) => {
     }
 
     // 1️⃣ Check if referral code exists
-    const existingUser = await User.findOne({ myinviteCode: inviteCode });
-    if (!existingUser) {
-      return res.status(201).json({ error: "Invitation code not found." });
-    }
+    
 
     // 2️⃣ Generate a unique 6-character invite code
     let myinviteCode;
