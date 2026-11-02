@@ -277,8 +277,13 @@ export default function HomePage() {
         <main className="flex-1 overflow-auto pb-24">
           {/* Motivational Banner - theme-matched, responsive on mobile and desktop */}
           <section className="relative w-full overflow-hidden bg-[#2d3e2f]">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#2d3e2f] via-[#3a4d3c] to-[#1f2a20]"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#a3d65c]/10 via-transparent to-[#a3d65c]/10"></div>
+            <img
+              src="/home-banner-rocket.jpg"
+              alt="Axon premium growth banner"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-[#2d3e2f]/60"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#2d3e2f]/80 via-[#3a4d3c]/50 to-[#1f2a20]/80"></div>
 
             {/* Glow Elements */}
             <div className="absolute -top-10 left-1/4 w-40 h-40 sm:w-56 sm:h-56 bg-[#a3d65c]/20 rounded-full blur-3xl animate-pulse"></div>
@@ -327,17 +332,6 @@ export default function HomePage() {
                   <LucideIcons.Headphones className="h-4 w-4 text-[#a3d65c]" /> 24/7 Support
                 </span>
               </div>
-            </div>
-          </section>
-
-          {/* Home Banner Image */}
-          <section className="w-full bg-[#2d3e2f] px-4 pb-8 sm:px-6">
-            <div className="max-w-7xl mx-auto overflow-hidden rounded-3xl border border-[#a3d65c]/20 shadow-2xl">
-              <img
-                src="/home-banner-rocket.jpg"
-                alt="Axon premium growth banner"
-                className="w-full h-auto object-cover"
-              />
             </div>
           </section>
 
