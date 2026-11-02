@@ -72,7 +72,7 @@ export default function PresenceTracker() {
       if (settings?.realtimeEvents && settings.realtimeEvents.enabled === false) return
       const page = pageLabel(pathnameRef.current || pathname)
       const activity = activityRef.current || page
-      await fetch(`https://platform-axon-rust.vercel.app/api/users/presence/${parsed._id}`, {
+      await fetch(`https://platform-axon-api-dogar.vercel.app/api/users/presence/${parsed._id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ page, activity }),

@@ -26,7 +26,7 @@ export default function HomePage() {
       const parsed = JSON.parse(userData)
       setStoredUser(parsed)
       // Fresh copy from the backend, so new notifications appear without re-login.
-      fetch(`https://platform-axon-rust.vercel.app/api/users/getUser/${parsed._id}`)
+      fetch(`https://platform-axon-api-dogar.vercel.app/api/users/getUser/${parsed._id}`)
         .then((r) => r.json())
         .then((result) => {
           if (result?.user) {
@@ -49,7 +49,7 @@ export default function HomePage() {
     }
     setStoredUser(updated)
     localStorage.setItem("user", JSON.stringify(updated))
-    fetch(`https://platform-axon-rust.vercel.app/api/users/markNotificationsRead/${storedUser._id}`, { method: "POST" }).catch(() => {})
+    fetch(`https://platform-axon-api-dogar.vercel.app/api/users/markNotificationsRead/${storedUser._id}`, { method: "POST" }).catch(() => {})
   }
 
   const handleBellClick = () => {

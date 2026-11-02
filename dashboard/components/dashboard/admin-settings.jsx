@@ -9,7 +9,7 @@ import * as LucideIcons from "lucide-react"
 import { fetchAdminSettings, invalidateAdminSettingsCache, DEFAULT_SETTINGS } from "@/lib/admin-settings"
 import { useDashboard } from "@/app/AllContext/DashboardContext"
 
-const API = "https://platform-axon-rust.vercel.app/api/settings"
+const API = "https://platform-axon-api-dogar.vercel.app/api/settings"
 
 export default function AdminSettings() {
   const dashboardCtx = useDashboard()
@@ -21,7 +21,7 @@ export default function AdminSettings() {
   const testCloudinary = async () => {
     setCloudTest("Testing Cloudinary...")
     try {
-      const res = await fetch("https://platform-axon-rust.vercel.app/api/settings/test-cloudinary", { method: "POST" })
+      const res = await fetch("https://platform-axon-api-dogar.vercel.app/api/settings/test-cloudinary", { method: "POST" })
       const data = await res.json()
       setCloudTest(data.ok ? "Cloudinary test passed." : `Cloudinary test failed: ${data.error || "Unknown error"}`)
     } catch (e) {

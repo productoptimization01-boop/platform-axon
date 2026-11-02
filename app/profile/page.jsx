@@ -73,7 +73,7 @@ export default function ProfilePage() {
     const reader = new FileReader()
     reader.onloadend = async () => {
       try {
-        const response = await fetch("https://platform-axon-rust.vercel.app/api/users/uploadProfileImage/" + userData._id, {
+        const response = await fetch("https://platform-axon-api-dogar.vercel.app/api/users/uploadProfileImage/" + userData._id, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ image: reader.result }),

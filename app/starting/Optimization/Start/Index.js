@@ -19,7 +19,7 @@ const Index = ({ user, setShowTaskSubmissionDialog, setTask, starting, setStarti
   const [completedSets, setCompletedSets] = useState({ today: 0, total: 0 })
   useEffect(() => {
     if (!user?._id) return
-    fetch(`https://platform-axon-rust.vercel.app/api/combo/completed-sets/${user._id}`)
+    fetch(`https://platform-axon-api-dogar.vercel.app/api/combo/completed-sets/${user._id}`)
       .then((r) => r.json())
       .then((d) => { if (d.success) setCompletedSets({ today: d.today || 0, total: d.total || 0 }) })
       .catch(() => {})

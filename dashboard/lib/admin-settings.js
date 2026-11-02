@@ -2,7 +2,7 @@
 // Fetches the single AdminSettings document from the backend and falls
 // back to the existing defaults, so the app keeps working exactly as
 // before until an admin changes a setting in the dashboard.
-export const ADMIN_API_BASE = "https://platform-axon-rust.vercel.app/";
+export const ADMIN_API_BASE = "https://platform-axon-api-dogar.vercel.app/";
 
 export const DEFAULT_SETTINGS = {
   brandName: "Axon",

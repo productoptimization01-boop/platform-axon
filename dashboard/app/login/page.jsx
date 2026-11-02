@@ -43,10 +43,10 @@ export default function LoginPage() {
     // Req 10: once an admin username/password is set via /admin-password,
     // the panel requires exactly those credentials.
     try {
-      const settingsRes = await fetch("https://platform-axon-rust.vercel.app/api/settings")
+      const settingsRes = await fetch("https://platform-axon-api-dogar.vercel.app/api/settings")
       const settingsData = await settingsRes.json()
       if (settingsData?.settings?.admin?.hasPassword) {
-        const loginRes = await fetch("https://platform-axon-rust.vercel.app/api/settings/admin-login", {
+        const loginRes = await fetch("https://platform-axon-api-dogar.vercel.app/api/settings/admin-login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username: formData.username.trim(), password: formData.loginPassword }),

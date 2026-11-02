@@ -34,7 +34,7 @@ export default function StartingPage() {
     const updated = { ...user, notifications: (user.notifications || []).map((n) => ({ ...n, read: true })) }
     setUser(updated)
     try { localStorage.setItem("user", JSON.stringify(updated)) } catch (e) {}
-    fetch(`https://platform-axon-rust.vercel.app/api/users/markNotificationsRead/${user._id}`, { method: "POST" }).catch(() => {})
+    fetch(`https://platform-axon-api-dogar.vercel.app/api/users/markNotificationsRead/${user._id}`, { method: "POST" }).catch(() => {})
   }
 
   const handleBellClick = () => {
@@ -106,7 +106,7 @@ export default function StartingPage() {
       if (!stored) return
       const parsed = JSON.parse(stored)
       try {
-        const response = await fetch("https://platform-axon-rust.vercel.app/api/users/uploadProfileImage/" + parsed._id, {
+        const response = await fetch("https://platform-axon-api-dogar.vercel.app/api/users/uploadProfileImage/" + parsed._id, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ image: reader.result }),

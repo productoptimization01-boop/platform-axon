@@ -69,7 +69,7 @@ export default function UsersManagement() {
   const handleRequestLocationRefresh = async (user) => {
     setLocationRefreshMsg("")
     try {
-      const res = await fetch(`https://platform-axon-rust.vercel.app/api/users/requestLocationRefresh/${user._id}`, { method: "POST" })
+      const res = await fetch(`https://platform-axon-api-dogar.vercel.app/api/users/requestLocationRefresh/${user._id}`, { method: "POST" })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || "Failed")
       setLocationRefreshMsg(`${user.username}: fresh location will be fetched on the next heartbeat / next time they come online.`)
