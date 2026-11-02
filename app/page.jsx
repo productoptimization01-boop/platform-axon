@@ -195,7 +195,7 @@ export default function HomePage() {
               {/* 👤 Profile */}
               <Link
                 href="/profile"
-                className="text-gray-300 hover:text-lime-400 transition-colors rounded-xl hover:bg-[#3d4e3f] p-1"
+                className="flex items-center gap-2 text-gray-200 hover:text-lime-400 transition-colors rounded-full hover:bg-[#3d4e3f] pl-1 pr-3 py-1 border border-lime-500/30"
                 title="Profile"
               >
                 {(storedUser.profile?.photoLink || (storedUser.profileimage && storedUser.profileimage !== "none" ? storedUser.profileimage : "")) ? (
@@ -203,6 +203,7 @@ export default function HomePage() {
                 ) : (
                   <LucideIcons.UserCircle className="h-6 w-6" />
                 )}
+                <span className="text-sm font-bold truncate max-w-[110px] sm:max-w-none">{storedUser.username}</span>
               </Link>
 
               {/* 🔽 Notification Dropdown */}
@@ -511,19 +512,6 @@ export default function HomePage() {
             </div>
           </section>
         </main>
-        {/* Enhanced Fixed Badge */}
-        <div className="fixed bottom-28 right-4 z-50">
-          <Button className="group flex items-center gap-3 px-6 py-4 rounded-full shadow-2xl bg-lime-500 hover:bg-lime-600 text-[#2d3e2f] transition-all duration-300 transform hover:scale-105 border-2 border-lime-400">
-            <div className="w-8 h-8 rounded-full bg-[#2d3e2f]/30 flex items-center justify-center">
-              <LucideIcons.UserCircle className="h-5 w-5 text-[#2d3e2f]" />
-            </div>
-            <div className="text-left">
-              <p className="text-xs font-medium animate-shimmer">Welcome</p>
-              <p className="font-bold text-sm animate-shimmer-username">{storedUser?.username || "User"}</p>
-            </div>
-            <LucideIcons.ChevronUp className="h-4 w-4 group-hover:-translate-y-1 transition-transform" />
-          </Button>
-        </div>
 
         <Bottom />
       </div>
