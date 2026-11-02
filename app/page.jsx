@@ -330,6 +330,17 @@ export default function HomePage() {
             </div>
           </section>
 
+          {/* Home Banner Image */}
+          <section className="w-full bg-[#2d3e2f] px-4 pb-8 sm:px-6">
+            <div className="max-w-7xl mx-auto overflow-hidden rounded-3xl border border-[#a3d65c]/20 shadow-2xl">
+              <img
+                src="/home-banner-rocket.jpg"
+                alt="Axon premium growth banner"
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </section>
+
           {/* Enhanced Navigation Tabs */}
           <section className="w-full py-12 bg-[#3a4a3c]">
             <div className="max-w-7xl mx-auto px-4 md:px-6">
